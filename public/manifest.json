@@ -1,0 +1,10 @@
+{
+  "name": "Sentient Continuum™ — Behavioral Health EMR",
+  "short_name": "Sentient Continuum",
+  "description": "A Patient-First Behavioral Health EMR. Demo with mock data only.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0b",
+  "theme_color": "#0a0a0b",
+  "icons": []
+}
