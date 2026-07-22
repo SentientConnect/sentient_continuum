@@ -1,11 +1,12 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import { X } from 'lucide-react'
+
 import { NAV_ITEMS } from '@/lib/demo-data'
+import { cn } from '@/lib/utils'
 import { useDemo } from './demo-context'
 import { NavIcon } from './nav-icon'
-import { X } from 'lucide-react'
-import Image from 'next/image'
 
 export function Sidebar({
   open,
@@ -24,7 +25,7 @@ export function Sidebar({
     <>
       {open ? (
         <div
-          className="fixed inset-0 z-40 bg-black/60 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/70 lg:hidden"
           onClick={onClose}
           aria-hidden="true"
         />
@@ -32,27 +33,35 @@ export function Sidebar({
 
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-50 flex w-72 flex-col bg-sidebar text-sidebar-foreground transition-transform duration-300 lg:sticky lg:top-0 lg:z-0 lg:h-svh lg:translate-x-0',
+          'fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-white/10 bg-black text-white transition-transform duration-300 lg:sticky lg:top-0 lg:z-0 lg:h-svh lg:translate-x-0',
           open ? 'translate-x-0' : '-translate-x-full',
         )}
         aria-label="Main navigation"
       >
-        {/* Logo placeholder */}
-        <div className="flex items-center justify-between gap-3 border-b border-sidebar-border px-5 py-4">
-          <div className="flex items-center gap-3">
-            <Image src="/phoenix-s.png" alt="Sentient Connect Phoenix S" width={42} height={42} className="rounded-xl" />
-            <div className="leading-tight">
-              <p className="text-sm font-semibold text-sidebar-foreground">
-                Sentient Continuum™
-              </p>
-              <p className="text-[11px] text-sidebar-foreground/60">
-                Sentient Connect™ · SentientOS™
-              </p>
-            </div>
-          </div>
+        <div className="flex min-h-28 items-center justify-between gap-3 border-b border-white/10 px-4 py-4">
           <button
+            type="button"
+            onClick={() => {
+              navigate('dashboard')
+              onClose()
+            }}
+            className="min-w-0 flex-1 text-left"
+            aria-label="Open Sentient Continuum dashboard"
+          >
+            <Image
+              src="/Sentient_Continuum.png"
+              alt="Sentient Continuum — Powered by SentientOS"
+              width={640}
+              height={260}
+              priority
+              className="h-auto max-h-24 w-full object-contain object-left"
+            />
+          </button>
+
+          <button
+            type="button"
             onClick={onClose}
-            className="rounded-lg p-1.5 text-sidebar-foreground/70 hover:bg-sidebar-accent lg:hidden"
+            className="shrink-0 rounded-lg p-2 text-white/70 transition hover:bg-white/10 hover:text-white lg:hidden"
             aria-label="Close navigation"
           >
             <X className="size-5" />
@@ -63,9 +72,11 @@ export function Sidebar({
           <ul className="flex flex-col gap-1">
             {items.map((item) => {
               const active = view === item.key
+
               return (
                 <li key={item.key}>
                   <button
+                    type="button"
                     onClick={() => {
                       navigate(item.key)
                       onClose()
@@ -74,11 +85,14 @@ export function Sidebar({
                     className={cn(
                       'flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
                       active
-                        ? 'bg-sidebar-primary text-sidebar-primary-foreground'
-                        : 'text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                        ? 'bg-[#d6a63a] text-black'
+                        : 'text-white/75 hover:bg-white/10 hover:text-white',
                     )}
                   >
-                    <NavIcon name={item.icon} className="size-[18px] shrink-0" />
+                    <NavIcon
+                      name={item.icon}
+                      className="size-[18px] shrink-0"
+                    />
                     <span className="truncate">{item.label}</span>
                   </button>
                 </li>
@@ -87,10 +101,11 @@ export function Sidebar({
           </ul>
         </nav>
 
-        <div className="border-t border-sidebar-border px-5 py-3">
-          <p className="text-[11px] leading-relaxed text-sidebar-foreground/50">
-            Demo environment — realistic mock data only. Designed to support
-            HIPAA-compliant workflows.
+        <div className="border-t border-white/10 px-5 py-4">
+          <p className="text-[11px] leading-relaxed text-white/45">
+            Demo environment using mock client data. Designed to support
+            HIPAA-compliant workflows, consent-controlled sharing, role-based
+            access and complete audit tracking.
           </p>
         </div>
       </aside>
