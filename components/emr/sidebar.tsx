@@ -38,14 +38,14 @@ export function Sidebar({
         )}
         aria-label="Main navigation"
       >
-        <div className="flex min-h-28 items-center justify-between gap-3 border-b border-white/10 px-4 py-4">
+        <div className="relative flex min-h-28 items-center justify-center border-b border-white/10 px-4 py-4">
           <button
             type="button"
             onClick={() => {
               navigate('dashboard')
               onClose()
             }}
-            className="min-w-0 flex-1 text-left"
+            className="flex w-full items-center justify-center"
             aria-label="Open Sentient Continuum dashboard"
           >
             <Image
@@ -54,14 +54,14 @@ export function Sidebar({
               width={640}
               height={260}
               priority
-              className="h-auto max-h-24 w-full object-contain object-left"
+              className="mx-auto h-auto max-h-24 w-full max-w-[250px] object-contain object-center"
             />
           </button>
 
           <button
             type="button"
             onClick={onClose}
-            className="shrink-0 rounded-lg p-2 text-white/70 transition hover:bg-white/10 hover:text-white lg:hidden"
+            className="absolute right-3 top-3 rounded-lg p-2 text-white/70 transition hover:bg-white/10 hover:text-white lg:hidden"
             aria-label="Close navigation"
           >
             <X className="size-5" />
