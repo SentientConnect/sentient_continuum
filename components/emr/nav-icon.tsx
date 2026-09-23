@@ -14,6 +14,9 @@ import {
   TrendingUp,
   CircleCheckBig,
   ShieldCheck,
+  CalendarDays,
+  CircleDollarSign,
+  Columns3,
   Settings,
   type LucideIcon,
 } from 'lucide-react'
@@ -32,6 +35,9 @@ const map: Record<string, LucideIcon> = {
   TrendingUp,
   CircleCheckBig,
   ShieldCheck,
+  CalendarDays,
+  CircleDollarSign,
+  Columns3,
   Settings,
 }
 
