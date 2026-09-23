@@ -23,6 +23,7 @@ export const ROLES: Role[] = [
 
 export type NavKey =
   | 'dashboard'
+  | 'daily'
   | 'clients'
   | 'intake'
   | 'pathway'
@@ -35,6 +36,8 @@ export type NavKey =
   | 'outcomes'
   | 'discharge'
   | 'audit'
+  | 'billing'
+  | 'compare'
   | 'settings'
 
 export interface NavItem {
@@ -46,6 +49,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { key: 'dashboard', label: 'Dashboard', icon: 'LayoutDashboard', roles: 'all' },
+  { key: 'daily', label: 'Daily Brief', icon: 'CalendarDays', roles: ['Clinician', 'Medical Provider', 'Case Manager', 'Facility Administrator', 'Intake Coordinator'] },
   { key: 'clients', label: 'Clients', icon: 'Users', roles: 'all' },
   {
     key: 'intake',
@@ -98,6 +102,8 @@ export const NAV_ITEMS: NavItem[] = [
     icon: 'ShieldCheck',
     roles: ['Facility Administrator', 'Receiving Facility'],
   },
+  { key: 'billing', label: 'Billing & Revenue', icon: 'CircleDollarSign', roles: ['Clinician', 'Medical Provider', 'Case Manager', 'Facility Administrator'] },
+  { key: 'compare', label: 'Compare Software', icon: 'Columns3', roles: ['Intake Coordinator', 'Clinician', 'Medical Provider', 'Case Manager', 'Facility Administrator', 'Receiving Facility'] },
   { key: 'settings', label: 'Settings', icon: 'Settings', roles: 'all' },
 ]
 
