@@ -34,6 +34,12 @@ import { DemoProvider, useDemo } from '@/components/emr/demo-context'
 import { Sidebar } from '@/components/emr/sidebar'
 import { Topbar } from '@/components/emr/topbar'
 import {
+  AuraClientBrief,
+  BillingView,
+  CompareSoftwareView,
+  DailyBriefView,
+} from '@/components/emr/intelligence-views'
+import {
   Badge,
   Card,
   CardBody,
@@ -124,6 +130,7 @@ function ComplianceStrip() {
 
 function ViewRouter({ view }: { view: NavKey }) {
   if (view === 'dashboard') return <Dashboard />
+  if (view === 'daily') return <DailyBriefView />
   if (view === 'roi') return <TransferCenter />
   if (view === 'mbs') return <MbsView />
   if (view === 'pathway') return <PathwayView />
@@ -136,6 +143,8 @@ function ViewRouter({ view }: { view: NavKey }) {
   if (view === 'intake') return <IntakeView />
   if (view === 'clients') return <ClientRecord />
   if (view === 'notes') return <NotesView />
+  if (view === 'billing') return <BillingView />
+  if (view === 'compare') return <CompareSoftwareView />
 
   return <SettingsView />
 }
@@ -2356,6 +2365,7 @@ function ClientRecord() {
 
       <ClientSummaryCard />
       <ClientGoalBanner />
+      <AuraClientBrief />
 
       <Card>
         <CardBody>
